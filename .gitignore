@@ -24,3 +24,6 @@ yarn-error.log*
 
 .tanstack
 package-lock.json
+src/route
+src/routeTree.gen.ts
+dist/

@@ -1,10 +1,17 @@
 {
     "compilerOptions": {
+        // "target": "ES2020",
+        // "module": "ESNext",
+        // "moduleResolution": "node",
         "jsx": "react-jsx",
         "baseUrl": ".",
         "paths": {
             "@/*": ["./src/*"]
         },
-        "strictNullChecks": true
+        "strictNullChecks": true,
+        // "allowSyntheticDefaultImports": true,
+        // "esModuleInterop": true,
+        // "skipLibCheck": true,
+        "strict": true
     }
 }
