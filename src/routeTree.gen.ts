@@ -9,25 +9,36 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SignupRouteImport } from './routes/signup'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
+import { Route as GuestRouteRouteImport } from './routes/_guest/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
+import { Route as GuestSignupRouteImport } from './routes/_guest/signup'
+import { Route as GuestLoginRouteImport } from './routes/_guest/login'
+import { Route as AuthUserRouteRouteImport } from './routes/_auth/user/route'
+import { Route as AuthEmployeeRouteRouteImport } from './routes/_auth/employee/route'
+import { Route as AuthAdminRouteRouteImport } from './routes/_auth/admin/route'
+import { Route as AuthUserSettingsRouteImport } from './routes/_auth/user/settings'
+import { Route as AuthUserProfileRouteImport } from './routes/_auth/user/profile'
+import { Route as AuthUserDashboardRouteImport } from './routes/_auth/user/dashboard'
+import { Route as AuthEmployeeProfileRouteImport } from './routes/_auth/employee/profile'
+import { Route as AuthEmployeeDashboardRouteImport } from './routes/_auth/employee/dashboard'
+import { Route as AuthAdminProfileRouteImport } from './routes/_auth/admin/profile'
+import { Route as AuthAdminDashboardRouteImport } from './routes/_auth/admin/dashboard'
+import { Route as AuthUserTicketsResolvedRouteImport } from './routes/_auth/user/tickets/resolved'
+import { Route as AuthUserTicketsPendingRouteImport } from './routes/_auth/user/tickets/pending'
+import { Route as AuthEmployeeTicketsResolvedRouteImport } from './routes/_auth/employee/tickets/resolved'
+import { Route as AuthEmployeeTicketsInprogressRouteImport } from './routes/_auth/employee/tickets/inprogress'
+import { Route as AuthEmployeeAdministrationSettingsRouteImport } from './routes/_auth/employee/administration/settings'
+import { Route as AuthEmployeeAdministrationAnalyticsRouteImport } from './routes/_auth/employee/administration/analytics'
+import { Route as AuthAdminTicketsResolvedRouteImport } from './routes/_auth/admin/tickets/resolved'
+import { Route as AuthAdminTicketsInprogressRouteImport } from './routes/_auth/admin/tickets/inprogress'
+import { Route as AuthAdminAdministrationUsermanagementRouteImport } from './routes/_auth/admin/administration/usermanagement'
+import { Route as AuthAdminAdministrationSettingsRouteImport } from './routes/_auth/admin/administration/settings'
+import { Route as AuthAdminAdministrationAnalyticsRouteImport } from './routes/_auth/admin/administration/analytics'
+import { Route as AuthAdminAdministrationUserIdRouteImport } from './routes/_auth/admin/administration/user/$id'
+import { Route as AuthAdminAdministrationEmployeesIdRouteImport } from './routes/_auth/admin/administration/employees/$id'
 
-const SignupRoute = SignupRouteImport.update({
-  id: '/signup',
-  path: '/signup',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DashboardRouteRoute = DashboardRouteRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
+const GuestRouteRoute = GuestRouteRouteImport.update({
+  id: '/_guest',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -35,69 +46,332 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardIndexRoute = DashboardIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => DashboardRouteRoute,
+const GuestSignupRoute = GuestSignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => GuestRouteRoute,
 } as any)
+const GuestLoginRoute = GuestLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => GuestRouteRoute,
+} as any)
+const AuthUserRouteRoute = AuthUserRouteRouteImport.update({
+  id: '/_auth/user',
+  path: '/user',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthEmployeeRouteRoute = AuthEmployeeRouteRouteImport.update({
+  id: '/_auth/employee',
+  path: '/employee',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthAdminRouteRoute = AuthAdminRouteRouteImport.update({
+  id: '/_auth/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthUserSettingsRoute = AuthUserSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AuthUserRouteRoute,
+} as any)
+const AuthUserProfileRoute = AuthUserProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthUserRouteRoute,
+} as any)
+const AuthUserDashboardRoute = AuthUserDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthUserRouteRoute,
+} as any)
+const AuthEmployeeProfileRoute = AuthEmployeeProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthEmployeeRouteRoute,
+} as any)
+const AuthEmployeeDashboardRoute = AuthEmployeeDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthEmployeeRouteRoute,
+} as any)
+const AuthAdminProfileRoute = AuthAdminProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthAdminRouteRoute,
+} as any)
+const AuthAdminDashboardRoute = AuthAdminDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthAdminRouteRoute,
+} as any)
+const AuthUserTicketsResolvedRoute = AuthUserTicketsResolvedRouteImport.update({
+  id: '/tickets/resolved',
+  path: '/tickets/resolved',
+  getParentRoute: () => AuthUserRouteRoute,
+} as any)
+const AuthUserTicketsPendingRoute = AuthUserTicketsPendingRouteImport.update({
+  id: '/tickets/pending',
+  path: '/tickets/pending',
+  getParentRoute: () => AuthUserRouteRoute,
+} as any)
+const AuthEmployeeTicketsResolvedRoute =
+  AuthEmployeeTicketsResolvedRouteImport.update({
+    id: '/tickets/resolved',
+    path: '/tickets/resolved',
+    getParentRoute: () => AuthEmployeeRouteRoute,
+  } as any)
+const AuthEmployeeTicketsInprogressRoute =
+  AuthEmployeeTicketsInprogressRouteImport.update({
+    id: '/tickets/inprogress',
+    path: '/tickets/inprogress',
+    getParentRoute: () => AuthEmployeeRouteRoute,
+  } as any)
+const AuthEmployeeAdministrationSettingsRoute =
+  AuthEmployeeAdministrationSettingsRouteImport.update({
+    id: '/administration/settings',
+    path: '/administration/settings',
+    getParentRoute: () => AuthEmployeeRouteRoute,
+  } as any)
+const AuthEmployeeAdministrationAnalyticsRoute =
+  AuthEmployeeAdministrationAnalyticsRouteImport.update({
+    id: '/administration/analytics',
+    path: '/administration/analytics',
+    getParentRoute: () => AuthEmployeeRouteRoute,
+  } as any)
+const AuthAdminTicketsResolvedRoute =
+  AuthAdminTicketsResolvedRouteImport.update({
+    id: '/tickets/resolved',
+    path: '/tickets/resolved',
+    getParentRoute: () => AuthAdminRouteRoute,
+  } as any)
+const AuthAdminTicketsInprogressRoute =
+  AuthAdminTicketsInprogressRouteImport.update({
+    id: '/tickets/inprogress',
+    path: '/tickets/inprogress',
+    getParentRoute: () => AuthAdminRouteRoute,
+  } as any)
+const AuthAdminAdministrationUsermanagementRoute =
+  AuthAdminAdministrationUsermanagementRouteImport.update({
+    id: '/administration/usermanagement',
+    path: '/administration/usermanagement',
+    getParentRoute: () => AuthAdminRouteRoute,
+  } as any)
+const AuthAdminAdministrationSettingsRoute =
+  AuthAdminAdministrationSettingsRouteImport.update({
+    id: '/administration/settings',
+    path: '/administration/settings',
+    getParentRoute: () => AuthAdminRouteRoute,
+  } as any)
+const AuthAdminAdministrationAnalyticsRoute =
+  AuthAdminAdministrationAnalyticsRouteImport.update({
+    id: '/administration/analytics',
+    path: '/administration/analytics',
+    getParentRoute: () => AuthAdminRouteRoute,
+  } as any)
+const AuthAdminAdministrationUserIdRoute =
+  AuthAdminAdministrationUserIdRouteImport.update({
+    id: '/administration/user/$id',
+    path: '/administration/user/$id',
+    getParentRoute: () => AuthAdminRouteRoute,
+  } as any)
+const AuthAdminAdministrationEmployeesIdRoute =
+  AuthAdminAdministrationEmployeesIdRouteImport.update({
+    id: '/administration/employees/$id',
+    path: '/administration/employees/$id',
+    getParentRoute: () => AuthAdminRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRouteRouteWithChildren
-  '/login': typeof LoginRoute
-  '/signup': typeof SignupRoute
-  '/dashboard/': typeof DashboardIndexRoute
+  '/admin': typeof AuthAdminRouteRouteWithChildren
+  '/employee': typeof AuthEmployeeRouteRouteWithChildren
+  '/user': typeof AuthUserRouteRouteWithChildren
+  '/login': typeof GuestLoginRoute
+  '/signup': typeof GuestSignupRoute
+  '/admin/dashboard': typeof AuthAdminDashboardRoute
+  '/admin/profile': typeof AuthAdminProfileRoute
+  '/employee/dashboard': typeof AuthEmployeeDashboardRoute
+  '/employee/profile': typeof AuthEmployeeProfileRoute
+  '/user/dashboard': typeof AuthUserDashboardRoute
+  '/user/profile': typeof AuthUserProfileRoute
+  '/user/settings': typeof AuthUserSettingsRoute
+  '/admin/administration/analytics': typeof AuthAdminAdministrationAnalyticsRoute
+  '/admin/administration/settings': typeof AuthAdminAdministrationSettingsRoute
+  '/admin/administration/usermanagement': typeof AuthAdminAdministrationUsermanagementRoute
+  '/admin/tickets/inprogress': typeof AuthAdminTicketsInprogressRoute
+  '/admin/tickets/resolved': typeof AuthAdminTicketsResolvedRoute
+  '/employee/administration/analytics': typeof AuthEmployeeAdministrationAnalyticsRoute
+  '/employee/administration/settings': typeof AuthEmployeeAdministrationSettingsRoute
+  '/employee/tickets/inprogress': typeof AuthEmployeeTicketsInprogressRoute
+  '/employee/tickets/resolved': typeof AuthEmployeeTicketsResolvedRoute
+  '/user/tickets/pending': typeof AuthUserTicketsPendingRoute
+  '/user/tickets/resolved': typeof AuthUserTicketsResolvedRoute
+  '/admin/administration/employees/$id': typeof AuthAdminAdministrationEmployeesIdRoute
+  '/admin/administration/user/$id': typeof AuthAdminAdministrationUserIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/login': typeof LoginRoute
-  '/signup': typeof SignupRoute
-  '/dashboard': typeof DashboardIndexRoute
+  '/admin': typeof AuthAdminRouteRouteWithChildren
+  '/employee': typeof AuthEmployeeRouteRouteWithChildren
+  '/user': typeof AuthUserRouteRouteWithChildren
+  '/login': typeof GuestLoginRoute
+  '/signup': typeof GuestSignupRoute
+  '/admin/dashboard': typeof AuthAdminDashboardRoute
+  '/admin/profile': typeof AuthAdminProfileRoute
+  '/employee/dashboard': typeof AuthEmployeeDashboardRoute
+  '/employee/profile': typeof AuthEmployeeProfileRoute
+  '/user/dashboard': typeof AuthUserDashboardRoute
+  '/user/profile': typeof AuthUserProfileRoute
+  '/user/settings': typeof AuthUserSettingsRoute
+  '/admin/administration/analytics': typeof AuthAdminAdministrationAnalyticsRoute
+  '/admin/administration/settings': typeof AuthAdminAdministrationSettingsRoute
+  '/admin/administration/usermanagement': typeof AuthAdminAdministrationUsermanagementRoute
+  '/admin/tickets/inprogress': typeof AuthAdminTicketsInprogressRoute
+  '/admin/tickets/resolved': typeof AuthAdminTicketsResolvedRoute
+  '/employee/administration/analytics': typeof AuthEmployeeAdministrationAnalyticsRoute
+  '/employee/administration/settings': typeof AuthEmployeeAdministrationSettingsRoute
+  '/employee/tickets/inprogress': typeof AuthEmployeeTicketsInprogressRoute
+  '/employee/tickets/resolved': typeof AuthEmployeeTicketsResolvedRoute
+  '/user/tickets/pending': typeof AuthUserTicketsPendingRoute
+  '/user/tickets/resolved': typeof AuthUserTicketsResolvedRoute
+  '/admin/administration/employees/$id': typeof AuthAdminAdministrationEmployeesIdRoute
+  '/admin/administration/user/$id': typeof AuthAdminAdministrationUserIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRouteRouteWithChildren
-  '/login': typeof LoginRoute
-  '/signup': typeof SignupRoute
-  '/dashboard/': typeof DashboardIndexRoute
+  '/_guest': typeof GuestRouteRouteWithChildren
+  '/_auth/admin': typeof AuthAdminRouteRouteWithChildren
+  '/_auth/employee': typeof AuthEmployeeRouteRouteWithChildren
+  '/_auth/user': typeof AuthUserRouteRouteWithChildren
+  '/_guest/login': typeof GuestLoginRoute
+  '/_guest/signup': typeof GuestSignupRoute
+  '/_auth/admin/dashboard': typeof AuthAdminDashboardRoute
+  '/_auth/admin/profile': typeof AuthAdminProfileRoute
+  '/_auth/employee/dashboard': typeof AuthEmployeeDashboardRoute
+  '/_auth/employee/profile': typeof AuthEmployeeProfileRoute
+  '/_auth/user/dashboard': typeof AuthUserDashboardRoute
+  '/_auth/user/profile': typeof AuthUserProfileRoute
+  '/_auth/user/settings': typeof AuthUserSettingsRoute
+  '/_auth/admin/administration/analytics': typeof AuthAdminAdministrationAnalyticsRoute
+  '/_auth/admin/administration/settings': typeof AuthAdminAdministrationSettingsRoute
+  '/_auth/admin/administration/usermanagement': typeof AuthAdminAdministrationUsermanagementRoute
+  '/_auth/admin/tickets/inprogress': typeof AuthAdminTicketsInprogressRoute
+  '/_auth/admin/tickets/resolved': typeof AuthAdminTicketsResolvedRoute
+  '/_auth/employee/administration/analytics': typeof AuthEmployeeAdministrationAnalyticsRoute
+  '/_auth/employee/administration/settings': typeof AuthEmployeeAdministrationSettingsRoute
+  '/_auth/employee/tickets/inprogress': typeof AuthEmployeeTicketsInprogressRoute
+  '/_auth/employee/tickets/resolved': typeof AuthEmployeeTicketsResolvedRoute
+  '/_auth/user/tickets/pending': typeof AuthUserTicketsPendingRoute
+  '/_auth/user/tickets/resolved': typeof AuthUserTicketsResolvedRoute
+  '/_auth/admin/administration/employees/$id': typeof AuthAdminAdministrationEmployeesIdRoute
+  '/_auth/admin/administration/user/$id': typeof AuthAdminAdministrationUserIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/login' | '/signup' | '/dashboard/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/employee'
+    | '/user'
+    | '/login'
+    | '/signup'
+    | '/admin/dashboard'
+    | '/admin/profile'
+    | '/employee/dashboard'
+    | '/employee/profile'
+    | '/user/dashboard'
+    | '/user/profile'
+    | '/user/settings'
+    | '/admin/administration/analytics'
+    | '/admin/administration/settings'
+    | '/admin/administration/usermanagement'
+    | '/admin/tickets/inprogress'
+    | '/admin/tickets/resolved'
+    | '/employee/administration/analytics'
+    | '/employee/administration/settings'
+    | '/employee/tickets/inprogress'
+    | '/employee/tickets/resolved'
+    | '/user/tickets/pending'
+    | '/user/tickets/resolved'
+    | '/admin/administration/employees/$id'
+    | '/admin/administration/user/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/signup' | '/dashboard'
-  id: '__root__' | '/' | '/dashboard' | '/login' | '/signup' | '/dashboard/'
+  to:
+    | '/'
+    | '/admin'
+    | '/employee'
+    | '/user'
+    | '/login'
+    | '/signup'
+    | '/admin/dashboard'
+    | '/admin/profile'
+    | '/employee/dashboard'
+    | '/employee/profile'
+    | '/user/dashboard'
+    | '/user/profile'
+    | '/user/settings'
+    | '/admin/administration/analytics'
+    | '/admin/administration/settings'
+    | '/admin/administration/usermanagement'
+    | '/admin/tickets/inprogress'
+    | '/admin/tickets/resolved'
+    | '/employee/administration/analytics'
+    | '/employee/administration/settings'
+    | '/employee/tickets/inprogress'
+    | '/employee/tickets/resolved'
+    | '/user/tickets/pending'
+    | '/user/tickets/resolved'
+    | '/admin/administration/employees/$id'
+    | '/admin/administration/user/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/_guest'
+    | '/_auth/admin'
+    | '/_auth/employee'
+    | '/_auth/user'
+    | '/_guest/login'
+    | '/_guest/signup'
+    | '/_auth/admin/dashboard'
+    | '/_auth/admin/profile'
+    | '/_auth/employee/dashboard'
+    | '/_auth/employee/profile'
+    | '/_auth/user/dashboard'
+    | '/_auth/user/profile'
+    | '/_auth/user/settings'
+    | '/_auth/admin/administration/analytics'
+    | '/_auth/admin/administration/settings'
+    | '/_auth/admin/administration/usermanagement'
+    | '/_auth/admin/tickets/inprogress'
+    | '/_auth/admin/tickets/resolved'
+    | '/_auth/employee/administration/analytics'
+    | '/_auth/employee/administration/settings'
+    | '/_auth/employee/tickets/inprogress'
+    | '/_auth/employee/tickets/resolved'
+    | '/_auth/user/tickets/pending'
+    | '/_auth/user/tickets/resolved'
+    | '/_auth/admin/administration/employees/$id'
+    | '/_auth/admin/administration/user/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
-  LoginRoute: typeof LoginRoute
-  SignupRoute: typeof SignupRoute
+  GuestRouteRoute: typeof GuestRouteRouteWithChildren
+  AuthAdminRouteRoute: typeof AuthAdminRouteRouteWithChildren
+  AuthEmployeeRouteRoute: typeof AuthEmployeeRouteRouteWithChildren
+  AuthUserRouteRoute: typeof AuthUserRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/signup': {
-      id: '/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof SignupRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteRouteImport
+    '/_guest': {
+      id: '/_guest'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof GuestRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -107,33 +381,277 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dashboard/': {
-      id: '/dashboard/'
-      path: '/'
-      fullPath: '/dashboard/'
-      preLoaderRoute: typeof DashboardIndexRouteImport
-      parentRoute: typeof DashboardRouteRoute
+    '/_guest/signup': {
+      id: '/_guest/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof GuestSignupRouteImport
+      parentRoute: typeof GuestRouteRoute
+    }
+    '/_guest/login': {
+      id: '/_guest/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof GuestLoginRouteImport
+      parentRoute: typeof GuestRouteRoute
+    }
+    '/_auth/user': {
+      id: '/_auth/user'
+      path: '/user'
+      fullPath: '/user'
+      preLoaderRoute: typeof AuthUserRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth/employee': {
+      id: '/_auth/employee'
+      path: '/employee'
+      fullPath: '/employee'
+      preLoaderRoute: typeof AuthEmployeeRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth/admin': {
+      id: '/_auth/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthAdminRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth/user/settings': {
+      id: '/_auth/user/settings'
+      path: '/settings'
+      fullPath: '/user/settings'
+      preLoaderRoute: typeof AuthUserSettingsRouteImport
+      parentRoute: typeof AuthUserRouteRoute
+    }
+    '/_auth/user/profile': {
+      id: '/_auth/user/profile'
+      path: '/profile'
+      fullPath: '/user/profile'
+      preLoaderRoute: typeof AuthUserProfileRouteImport
+      parentRoute: typeof AuthUserRouteRoute
+    }
+    '/_auth/user/dashboard': {
+      id: '/_auth/user/dashboard'
+      path: '/dashboard'
+      fullPath: '/user/dashboard'
+      preLoaderRoute: typeof AuthUserDashboardRouteImport
+      parentRoute: typeof AuthUserRouteRoute
+    }
+    '/_auth/employee/profile': {
+      id: '/_auth/employee/profile'
+      path: '/profile'
+      fullPath: '/employee/profile'
+      preLoaderRoute: typeof AuthEmployeeProfileRouteImport
+      parentRoute: typeof AuthEmployeeRouteRoute
+    }
+    '/_auth/employee/dashboard': {
+      id: '/_auth/employee/dashboard'
+      path: '/dashboard'
+      fullPath: '/employee/dashboard'
+      preLoaderRoute: typeof AuthEmployeeDashboardRouteImport
+      parentRoute: typeof AuthEmployeeRouteRoute
+    }
+    '/_auth/admin/profile': {
+      id: '/_auth/admin/profile'
+      path: '/profile'
+      fullPath: '/admin/profile'
+      preLoaderRoute: typeof AuthAdminProfileRouteImport
+      parentRoute: typeof AuthAdminRouteRoute
+    }
+    '/_auth/admin/dashboard': {
+      id: '/_auth/admin/dashboard'
+      path: '/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AuthAdminDashboardRouteImport
+      parentRoute: typeof AuthAdminRouteRoute
+    }
+    '/_auth/user/tickets/resolved': {
+      id: '/_auth/user/tickets/resolved'
+      path: '/tickets/resolved'
+      fullPath: '/user/tickets/resolved'
+      preLoaderRoute: typeof AuthUserTicketsResolvedRouteImport
+      parentRoute: typeof AuthUserRouteRoute
+    }
+    '/_auth/user/tickets/pending': {
+      id: '/_auth/user/tickets/pending'
+      path: '/tickets/pending'
+      fullPath: '/user/tickets/pending'
+      preLoaderRoute: typeof AuthUserTicketsPendingRouteImport
+      parentRoute: typeof AuthUserRouteRoute
+    }
+    '/_auth/employee/tickets/resolved': {
+      id: '/_auth/employee/tickets/resolved'
+      path: '/tickets/resolved'
+      fullPath: '/employee/tickets/resolved'
+      preLoaderRoute: typeof AuthEmployeeTicketsResolvedRouteImport
+      parentRoute: typeof AuthEmployeeRouteRoute
+    }
+    '/_auth/employee/tickets/inprogress': {
+      id: '/_auth/employee/tickets/inprogress'
+      path: '/tickets/inprogress'
+      fullPath: '/employee/tickets/inprogress'
+      preLoaderRoute: typeof AuthEmployeeTicketsInprogressRouteImport
+      parentRoute: typeof AuthEmployeeRouteRoute
+    }
+    '/_auth/employee/administration/settings': {
+      id: '/_auth/employee/administration/settings'
+      path: '/administration/settings'
+      fullPath: '/employee/administration/settings'
+      preLoaderRoute: typeof AuthEmployeeAdministrationSettingsRouteImport
+      parentRoute: typeof AuthEmployeeRouteRoute
+    }
+    '/_auth/employee/administration/analytics': {
+      id: '/_auth/employee/administration/analytics'
+      path: '/administration/analytics'
+      fullPath: '/employee/administration/analytics'
+      preLoaderRoute: typeof AuthEmployeeAdministrationAnalyticsRouteImport
+      parentRoute: typeof AuthEmployeeRouteRoute
+    }
+    '/_auth/admin/tickets/resolved': {
+      id: '/_auth/admin/tickets/resolved'
+      path: '/tickets/resolved'
+      fullPath: '/admin/tickets/resolved'
+      preLoaderRoute: typeof AuthAdminTicketsResolvedRouteImport
+      parentRoute: typeof AuthAdminRouteRoute
+    }
+    '/_auth/admin/tickets/inprogress': {
+      id: '/_auth/admin/tickets/inprogress'
+      path: '/tickets/inprogress'
+      fullPath: '/admin/tickets/inprogress'
+      preLoaderRoute: typeof AuthAdminTicketsInprogressRouteImport
+      parentRoute: typeof AuthAdminRouteRoute
+    }
+    '/_auth/admin/administration/usermanagement': {
+      id: '/_auth/admin/administration/usermanagement'
+      path: '/administration/usermanagement'
+      fullPath: '/admin/administration/usermanagement'
+      preLoaderRoute: typeof AuthAdminAdministrationUsermanagementRouteImport
+      parentRoute: typeof AuthAdminRouteRoute
+    }
+    '/_auth/admin/administration/settings': {
+      id: '/_auth/admin/administration/settings'
+      path: '/administration/settings'
+      fullPath: '/admin/administration/settings'
+      preLoaderRoute: typeof AuthAdminAdministrationSettingsRouteImport
+      parentRoute: typeof AuthAdminRouteRoute
+    }
+    '/_auth/admin/administration/analytics': {
+      id: '/_auth/admin/administration/analytics'
+      path: '/administration/analytics'
+      fullPath: '/admin/administration/analytics'
+      preLoaderRoute: typeof AuthAdminAdministrationAnalyticsRouteImport
+      parentRoute: typeof AuthAdminRouteRoute
+    }
+    '/_auth/admin/administration/user/$id': {
+      id: '/_auth/admin/administration/user/$id'
+      path: '/administration/user/$id'
+      fullPath: '/admin/administration/user/$id'
+      preLoaderRoute: typeof AuthAdminAdministrationUserIdRouteImport
+      parentRoute: typeof AuthAdminRouteRoute
+    }
+    '/_auth/admin/administration/employees/$id': {
+      id: '/_auth/admin/administration/employees/$id'
+      path: '/administration/employees/$id'
+      fullPath: '/admin/administration/employees/$id'
+      preLoaderRoute: typeof AuthAdminAdministrationEmployeesIdRouteImport
+      parentRoute: typeof AuthAdminRouteRoute
     }
   }
 }
 
-interface DashboardRouteRouteChildren {
-  DashboardIndexRoute: typeof DashboardIndexRoute
+interface GuestRouteRouteChildren {
+  GuestLoginRoute: typeof GuestLoginRoute
+  GuestSignupRoute: typeof GuestSignupRoute
 }
 
-const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
-  DashboardIndexRoute: DashboardIndexRoute,
+const GuestRouteRouteChildren: GuestRouteRouteChildren = {
+  GuestLoginRoute: GuestLoginRoute,
+  GuestSignupRoute: GuestSignupRoute,
 }
 
-const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
-  DashboardRouteRouteChildren,
+const GuestRouteRouteWithChildren = GuestRouteRoute._addFileChildren(
+  GuestRouteRouteChildren,
+)
+
+interface AuthAdminRouteRouteChildren {
+  AuthAdminDashboardRoute: typeof AuthAdminDashboardRoute
+  AuthAdminProfileRoute: typeof AuthAdminProfileRoute
+  AuthAdminAdministrationAnalyticsRoute: typeof AuthAdminAdministrationAnalyticsRoute
+  AuthAdminAdministrationSettingsRoute: typeof AuthAdminAdministrationSettingsRoute
+  AuthAdminAdministrationUsermanagementRoute: typeof AuthAdminAdministrationUsermanagementRoute
+  AuthAdminTicketsInprogressRoute: typeof AuthAdminTicketsInprogressRoute
+  AuthAdminTicketsResolvedRoute: typeof AuthAdminTicketsResolvedRoute
+  AuthAdminAdministrationEmployeesIdRoute: typeof AuthAdminAdministrationEmployeesIdRoute
+  AuthAdminAdministrationUserIdRoute: typeof AuthAdminAdministrationUserIdRoute
+}
+
+const AuthAdminRouteRouteChildren: AuthAdminRouteRouteChildren = {
+  AuthAdminDashboardRoute: AuthAdminDashboardRoute,
+  AuthAdminProfileRoute: AuthAdminProfileRoute,
+  AuthAdminAdministrationAnalyticsRoute: AuthAdminAdministrationAnalyticsRoute,
+  AuthAdminAdministrationSettingsRoute: AuthAdminAdministrationSettingsRoute,
+  AuthAdminAdministrationUsermanagementRoute:
+    AuthAdminAdministrationUsermanagementRoute,
+  AuthAdminTicketsInprogressRoute: AuthAdminTicketsInprogressRoute,
+  AuthAdminTicketsResolvedRoute: AuthAdminTicketsResolvedRoute,
+  AuthAdminAdministrationEmployeesIdRoute:
+    AuthAdminAdministrationEmployeesIdRoute,
+  AuthAdminAdministrationUserIdRoute: AuthAdminAdministrationUserIdRoute,
+}
+
+const AuthAdminRouteRouteWithChildren = AuthAdminRouteRoute._addFileChildren(
+  AuthAdminRouteRouteChildren,
+)
+
+interface AuthEmployeeRouteRouteChildren {
+  AuthEmployeeDashboardRoute: typeof AuthEmployeeDashboardRoute
+  AuthEmployeeProfileRoute: typeof AuthEmployeeProfileRoute
+  AuthEmployeeAdministrationAnalyticsRoute: typeof AuthEmployeeAdministrationAnalyticsRoute
+  AuthEmployeeAdministrationSettingsRoute: typeof AuthEmployeeAdministrationSettingsRoute
+  AuthEmployeeTicketsInprogressRoute: typeof AuthEmployeeTicketsInprogressRoute
+  AuthEmployeeTicketsResolvedRoute: typeof AuthEmployeeTicketsResolvedRoute
+}
+
+const AuthEmployeeRouteRouteChildren: AuthEmployeeRouteRouteChildren = {
+  AuthEmployeeDashboardRoute: AuthEmployeeDashboardRoute,
+  AuthEmployeeProfileRoute: AuthEmployeeProfileRoute,
+  AuthEmployeeAdministrationAnalyticsRoute:
+    AuthEmployeeAdministrationAnalyticsRoute,
+  AuthEmployeeAdministrationSettingsRoute:
+    AuthEmployeeAdministrationSettingsRoute,
+  AuthEmployeeTicketsInprogressRoute: AuthEmployeeTicketsInprogressRoute,
+  AuthEmployeeTicketsResolvedRoute: AuthEmployeeTicketsResolvedRoute,
+}
+
+const AuthEmployeeRouteRouteWithChildren =
+  AuthEmployeeRouteRoute._addFileChildren(AuthEmployeeRouteRouteChildren)
+
+interface AuthUserRouteRouteChildren {
+  AuthUserDashboardRoute: typeof AuthUserDashboardRoute
+  AuthUserProfileRoute: typeof AuthUserProfileRoute
+  AuthUserSettingsRoute: typeof AuthUserSettingsRoute
+  AuthUserTicketsPendingRoute: typeof AuthUserTicketsPendingRoute
+  AuthUserTicketsResolvedRoute: typeof AuthUserTicketsResolvedRoute
+}
+
+const AuthUserRouteRouteChildren: AuthUserRouteRouteChildren = {
+  AuthUserDashboardRoute: AuthUserDashboardRoute,
+  AuthUserProfileRoute: AuthUserProfileRoute,
+  AuthUserSettingsRoute: AuthUserSettingsRoute,
+  AuthUserTicketsPendingRoute: AuthUserTicketsPendingRoute,
+  AuthUserTicketsResolvedRoute: AuthUserTicketsResolvedRoute,
+}
+
+const AuthUserRouteRouteWithChildren = AuthUserRouteRoute._addFileChildren(
+  AuthUserRouteRouteChildren,
 )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DashboardRouteRoute: DashboardRouteRouteWithChildren,
-  LoginRoute: LoginRoute,
-  SignupRoute: SignupRoute,
+  GuestRouteRoute: GuestRouteRouteWithChildren,
+  AuthAdminRouteRoute: AuthAdminRouteRouteWithChildren,
+  AuthEmployeeRouteRoute: AuthEmployeeRouteRouteWithChildren,
+  AuthUserRouteRoute: AuthUserRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,82 +1,123 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 // Define user roles
-export type UserRole = "admin" | "manager" | "agent" | "user";
+export type UserRole = "ADMIN" | "EMPLOYEE" | "USER";
 
 // Define user interface
 export interface User {
   id: string;
   name: string;
   email: string;
-  avatar: string;
   role: UserRole;
-  permissions?: string[];
+  token: string; // Optional token for authentication
 }
 
 // Define auth context interface
 interface AuthContextType {
   user: User | null;
-  loading: boolean;
+  isLoading: boolean;
   login: (userData: User) => void;
   logout: () => void;
-  hasRole: (role: UserRole) => boolean;
-  hasPermission: (permission: string) => boolean;
+  signup: (userData: User) => void;
+  isAuthenticated: () => boolean;
+  getDashboardRoute: () => string;
+  getProfileRoute: () => string;
 }
 
 export const AuthContext = createContext<AuthContextType>({
   user: null,
-  loading: true,
+  isLoading: true,
   login: () => {},
   logout: () => {},
-  hasRole: () => false,
-  hasPermission: () => false,
+  signup: () => {},
+  isAuthenticated: () => false,
+  getDashboardRoute: () => "/",
+  getProfileRoute: () => "/",
 });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading user data
-    // In a real app, you'd fetch this from your API or localStorage
-    setTimeout(() => {
-      // Example: Set a mock user - replace with actual auth logic
-      setUser({
-        id: "1",
-        name: "John Doe",
-        email: "john@example.com",
-        avatar: "/avatars/john.jpg",
-        role: "admin", // Change this to test different roles
-        permissions: [
-          "read:users",
-          "write:users",
-          "read:tickets",
-          "write:tickets",
-        ],
-      });
-      setLoading(false);
-    }, 1000);
-  }, []);
+  const [isLoading, setIsLoading] = useState(true);
 
   function login(userData: User) {
+    setUser(userData);
+    // Store user data in localStorage
+    localStorage.setItem("user", JSON.stringify(userData));
+  }
+
+  function signup(userData: User) {
     setUser(userData);
   }
 
   function logout() {
     setUser(null);
+    // Remove user data from localStorage
+    localStorage.removeItem("user");
   }
 
-  function hasRole(role: UserRole): boolean {
-    return user?.role === role;
+  function isAuthenticated(): boolean {
+    return user !== null;
   }
 
-  function hasPermission(permission: string): boolean {
-    return user?.permissions?.includes(permission) || false;
+  function getDashboardRoute(): string {
+    console.log("user", user);
+
+    if (!user) return "/";
+    switch (user.role) {
+      case "ADMIN":
+        return "/admin/dashboard";
+      case "EMPLOYEE":
+        return "/employee/dashboard";
+      case "USER":
+        return "/user/dashboard";
+      default:
+        return "/";
+    }
+  }
+
+  function getProfileRoute(): string {
+    if (!user) return "/";
+    switch (user.role) {
+      case "ADMIN":
+        return "/admin/profile";
+      case "EMPLOYEE":
+        return "/employee/profile";
+      case "USER":
+        return "/user/profile";
+      default:
+        return "/";
+    }
+  }
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        const parsedUser: User = JSON.parse(storedUser);
+        setUser(parsedUser);
+      } catch (error) {
+        console.error("Failed to parse user data from localStorage", error);
+      }
+    }
+    setIsLoading(false);
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>; // Show a loading state while checking localStorage
   }
 
   return (
     <AuthContext.Provider
-      value={{ user, loading, login, logout, hasRole, hasPermission }}
+      value={{
+        user,
+        isLoading,
+        login,
+        logout,
+        signup,
+        isAuthenticated,
+        getDashboardRoute,
+        getProfileRoute,
+      }}
     >
       {children}
     </AuthContext.Provider>
@@ -91,3 +132,5 @@ export function useAuth() {
   }
   return context;
 }
+
+// {"email":"b@c.com","role":"USER","token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiQGMuY29tIiwicm9sZSI6IlVTRVIiLCJpZCI6IjY4Njc3Y2NhODlmYTFiMGVkNWM3MTcxOSIsImlhdCI6MTc1MTYyMTY2OSwiZXhwIjoxNzUxNzA4MDY5fQ.4TBzALRBuVa3OCoJ4etMQjifE1xsgRxwRyecag9Atc4","id":"68677cca89fa1b0ed5c71719","name":"ab"}
