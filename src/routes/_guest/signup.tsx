@@ -1,4 +1,5 @@
-import SignupForm from '@/components/auth/SignupForm'
+
+import SignupForm from '../../components/auth/SignUpform'
 import { createFileRoute } from '@tanstack/react-router'
 
 
